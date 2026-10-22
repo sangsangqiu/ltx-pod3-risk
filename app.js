@@ -73,7 +73,7 @@
     if(!result)return;
     $('result-content').innerHTML=['90d','1y','2y'].map(oc=>{
       const r=result.results[oc];
-      return `<div class="result-card ${oc==='1y'?'primary-result':''}"><p class="result-label">${t().outcomes[oc]}</p><div class="result-value">${(r.probability*100).toFixed(1)}<span>%</span></div><div><span class="risk-tag">${t().groups[r.group]}</span></div></div>`;
+      return `<div class="result-card outcome-${oc} ${oc==='1y'?'primary-result':''}"><p class="result-label">${t().outcomes[oc]}</p><div class="result-value">${(r.probability*100).toFixed(1)}<span>%</span></div><div><span class="risk-tag risk-${r.group}">${t().groups[r.group]}</span></div></div>`;
     }).join('')+`<p class="risk-explanation">${t().groupNote}</p>`;
   }
   function render() {
@@ -85,7 +85,7 @@
     $('stages').innerHTML=[1,2,3].map(n=>`<section class="stage" aria-labelledby="stage-${n}"><div class="stage-heading"><span class="stage-number">0${n}</span><div><h2 id="stage-${n}">${t().stages[n-1]}</h2><p class="stage-subtitle">${t().stageSub[n-1]}</p></div></div><div class="field-grid">${fields.filter(f=>f[1]===n).map(fieldMarkup).join('')}</div></section>`).join('');
     setValues(current);warnings();renderResults(lastResult);
     $('demo-note').hidden=!demoActive;
-    $('version').textContent='v0.1.3';
+    $('version').textContent='v0.1.5';
     $('cutoff-table').innerHTML=`<table class="cutoff-table"><thead><tr>${t().cutTitle.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${['90d','1y','2y'].map(oc=>`<tr><td>${t().outcomes[oc]}</td><td>${(model.outcomes[oc].cuts[0]*100).toFixed(3)}%</td><td>${(model.outcomes[oc].cuts[1]*100).toFixed(3)}%</td></tr>`).join('')}</tbody></table>`;
   }
   $('calculator').addEventListener('input',()=>{

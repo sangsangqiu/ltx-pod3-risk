@@ -13,3 +13,18 @@ main{max-width:1080px;padding:27px 24px 0}.hero{max-width:none;padding-bottom:20
 @media(max-width:1040px){.workspace{grid-template-columns:minmax(0,1fr) 255px;gap:24px}.stage{padding:15px 0 20px}.results-panel{padding:15px 0}h1{font-size:25px}}
 @media(max-width:760px){.topbar{padding:12px 18px}main{padding:22px 18px 0}.workspace{display:flex;gap:0}.results-column{padding-top:0;position:static;width:100%}.stage{padding:15px 0 20px}.field-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px}h1{font-size:23px}.intro{font-size:13px}.results-panel{padding:15px 0}.about{padding:16px 0}footer{padding:14px 18px}.result-value{font-size:25px}}
 @media(max-width:360px){.field-grid{grid-template-columns:1fr}}
+
+/* Larger results; horizon colors and independent risk-category labels. */
+.result-card,.result-card.primary-result,.result-card:not(.primary-result){padding:18px 0;gap:8px 10px}
+.result-label,.primary-result .result-label{font-size:14px;color:#343d44;font-weight:600}
+.result-value,.result-card:not(.primary-result) .result-value{font-size:36px;font-weight:650;line-height:1.2;font-variant-numeric:tabular-nums}
+.primary-result .result-value{font-size:38px}
+.result-value span{font-size:19px}
+.outcome-90d .result-value{color:#246b68}
+.outcome-1y .result-value{color:#285b83}
+.outcome-2y .result-value{color:#70548a}
+.risk-tag,.primary-result .risk-tag{display:inline-block;border:1px solid transparent;border-radius:2px;padding:3px 8px;font-size:13px;font-weight:600;line-height:1.5}
+.risk-tag.risk-low,.primary-result .risk-tag.risk-low{color:#27613d;background:#edf5ef;border-color:#c8dfcf}
+.risk-tag.risk-intermediate,.primary-result .risk-tag.risk-intermediate{color:#805715;background:#fff5e4;border-color:#ead4a8}
+.risk-tag.risk-high,.primary-result .risk-tag.risk-high{color:#a03838;background:#fbeeee;border-color:#e7bebe}
+@media(max-width:1040px) and (min-width:761px){.result-card,.result-card.primary-result,.result-card:not(.primary-result){grid-template-columns:1fr}.result-value,.result-card:not(.primary-result) .result-value{grid-column:1;grid-row:auto}.result-card>div:last-child{grid-row:3}}
