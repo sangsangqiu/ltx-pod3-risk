@@ -28,3 +28,6 @@ main{max-width:1080px;padding:27px 24px 0}.hero{max-width:none;padding-bottom:20
 .risk-tag.risk-intermediate,.primary-result .risk-tag.risk-intermediate{color:#805715;background:#fff5e4;border-color:#ead4a8}
 .risk-tag.risk-high,.primary-result .risk-tag.risk-high{color:#a03838;background:#fbeeee;border-color:#e7bebe}
 @media(max-width:1040px) and (min-width:761px){.result-card,.result-card.primary-result,.result-card:not(.primary-result){grid-template-columns:1fr}.result-value,.result-card:not(.primary-result) .result-value{grid-column:1;grid-row:auto}.result-card>div:last-child{grid-row:3}}
+
+/* Horizon is not a risk category; only category labels carry risk colors. */
+.result-card .result-value,.result-card.primary-result .result-value,.result-card:not(.primary-result) .result-value{color:#252b30}
