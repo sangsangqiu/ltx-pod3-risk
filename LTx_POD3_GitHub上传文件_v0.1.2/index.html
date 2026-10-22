@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Research calculator for 90-day, one-year and two-year mortality after lung transplantation, conditional on survival to POD3.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+  <title>POD3 肺移植风险计算器</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="model-data.js" defer></script>
+  <script src="engine.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="#top"><span class="brand-icon" aria-hidden="true">LTx</span><span>POD3 <span class="brand-muted">Research</span></span></a><nav><a href="#about" data-text="aboutLink">模型说明</a><button id="language" type="button" aria-label="Switch language">English</button></nav></header>
+  <main id="top">
+    <section class="hero">
+      <p class="eyebrow">PERIOPERATIVE RISK · MODEL M3</p>
+      <h1 data-text="title">肺移植术后死亡风险预测</h1>
+      <p class="intro" data-text="intro">用术后前72小时可获得的信息，估计90天、1年与2年的全因死亡风险。</p>
+      <div class="badges"><span data-text="adultBadge">成人首次肺移植</span><span data-text="landmarkBadge">术后72小时仍存活</span><span data-text="completeBadge">24项完整输入</span></div>
+    </section>
+    <div class="workspace">
+      <div class="entry-column">
+        <div class="entry-top"><p id="progress" role="status"></p><button type="button" class="text-button" id="demo" data-text="demo">载入演示数据</button></div>
+        <p id="demo-note" class="demo-note" hidden data-text="demoNote">正在使用人工设定的演示数值；这不是患者记录。</p>
+        <form id="calculator" novalidate>
+          <div id="stages"></div>
+          <div id="error-summary" role="alert" class="error-summary" hidden></div>
+          <div class="form-actions"><button class="primary" id="calculate" type="submit" data-text="calculate">计算风险 <span aria-hidden="true">→</span></button><button type="button" id="clear-form" class="secondary" data-text="reset">清空</button><span data-text="privacyShort">计算在本浏览器完成，不上传输入内容。</span></div>
+        </form>
+      </div>
+      <aside class="results-column" aria-label="Prediction results">
+        <section class="results-panel" id="result-panel" aria-live="polite">
+          <p class="eyebrow" data-text="resultEyebrow">M3 模型估计</p><h2 data-text="resultTitle">预测结果</h2>
+          <div id="empty-result"><div class="empty-symbol" aria-hidden="true">—</div><p data-text="empty">填写全部24项后，计算三个时间点的死亡风险。</p></div>
+          <div id="result-content" hidden></div>
+          <p id="stale-result" class="stale-note" hidden data-text="stale">输入已修改，请重新计算。</p>
+          <div class="result-footnote"><span class="dot"></span><p data-text="researchNote">仅供研究使用，不作为治疗或资源分配决策的唯一依据。</p></div>
+        </section>
+        <section class="side-info"><h3 data-text="beforeTitle">使用前请确认</h3><p data-text="beforeText">适用于成年首次肺移植、术后72小时仍存活的受者。所有结局时点均从移植日计算。</p><p data-text="meansText">术后化验输入0–72小时内均值；PGD输入72小时分级。</p></section>
+      </aside>
+    </div>
+    <section id="about" class="about"><div><p class="eyebrow">MODEL NOTES</p><h2 data-text="aboutTitle">关于这个研究工具</h2></div><div class="about-copy"><p data-text="aboutText">模型基于2016–2022年单中心队列开发，并在2023–2024年受者中进行时间验证。三个结局分别使用10套插补模型的预测概率平均值。本版要求全部变量实测填写，不执行缺失值插补。</p><p data-text="calibrationNote">时间验证中模型存在平均风险高估，尚需进一步验证并评估再校准。标准化系数不代表因果效应。</p><details><summary data-text="methodDetails">查看计算与分组方法</summary><p data-text="methodText">出血量和降钙素原先做自然对数log(1+x)转换，再代入每套模型的原始尺度系数计算概率，最后取10个概率的平均值。风险组使用开发队列第20和80百分位的完整精度切点：预测风险≤下切点为低风险，>下切点且≤上切点为中风险，>上切点为高风险。各结局切点不同。</p><div id="cutoff-table"></div></details></div></section>
+  </main>
+  <footer><span>LTx POD3 · <span id="version"></span></span><span data-text="footer">研究原型 · 无患者标识输入 · 无输入数据存储</span></footer>
+</body>
+</html>
