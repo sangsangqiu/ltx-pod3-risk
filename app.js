@@ -5,7 +5,7 @@
   let lang = 'zh', lastResult = null, demoActive = false;
   const fields = [
     ['age',1,'年龄','Age','岁','years'],['sex_male',1,'性别','Sex','',''],['BMI',1,'体质指数','Body mass index','kg/m²','kg/m²'],
-    ['COPD',1,'慢性阻塞性肺疾病','Chronic obstructive pulmonary disease','',''],['ILD',1,'间质性肺疾病','Interstitial lung disease','',''],['PAH',1,'肺动脉高压','Pulmonary arterial hypertension','',''],
+    ['COPD',1,'慢性阻塞性肺疾病','Chronic obstructive pulmonary disease','',''],['ILD',1,'间质性肺疾病','Interstitial lung disease','',''],['PAH',1,'肺高压','Pulmonary hypertension','',''],
     ['bronchiectasis',1,'支气管扩张','Bronchiectasis','',''],['pneumoconiosis',1,'尘肺病','Pneumoconiosis','',''],['diabetes',1,'糖尿病','Diabetes','',''],
     ['cardiac_disease',1,'心脏疾病','Cardiac disease','',''],['CKD',1,'慢性肾脏病','Chronic kidney disease','',''],['preop_infection',1,'术前感染','Preoperative infection','',''],
     ['double_lung',2,'移植类型','Transplant type','',''],['ECMO_intraop',2,'术中ECMO','Intraoperative ECMO','',''],['cold_ischemia_h',2,'冷缺血时间','Cold ischemia time','小时','hours'],['op_duration_h',2,'手术时长','Operative duration','小时','hours'],['blood_loss_ml',2,'出血量','Blood loss','mL','mL'],
